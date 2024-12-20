@@ -10,12 +10,27 @@ const postRouter = require("./routes/posts");
 // Use environment variable for PORT or default to 3000
 const PORT = process.env.PORT || 3000;
 
+// List of allowed origins
+const allowedOrigins = [
+  'https://social-f-three.vercel.app',
+  'http://localhost:5174',
+  'http://localhost:5173'
+  //  // Add your second origin here
+];
+
 // Define CORS options
 const corsOptions = {
-  origin: 'https://social-f-three.vercel.app',  // Explicitly specify the allowed origin
-  credentials: true,                            // Allow cookies and other credentials
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow necessary HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow necessary headers
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (like mobile apps or curl)
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies and other credentials
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow necessary HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
 };
 
 // Apply CORS middleware
