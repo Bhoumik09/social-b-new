@@ -11,8 +11,12 @@ const PORT = process.env.PORT || 3000;
 
 // Define CORS options
 // Apply CORS middleware with options
-app.use(cors());
+const corsOptions = {
+  origin: '* from this origin',
+  credentials: true,               // Allow credentials (cookies)
+};
 
+app.use(cors(corsOptions));
 // Body parser middlewares
 
 
