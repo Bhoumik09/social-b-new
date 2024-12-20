@@ -14,13 +14,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 // Body parser middlewares
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
 
 // Routes
+app.use(dbRouter);
 app.use(authRouter);
 app.use(commentRouter);
-app.use(dbRouter);
 app.use(postRouter);
 
 app.get("/", (req, res) => {
