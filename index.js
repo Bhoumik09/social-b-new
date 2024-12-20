@@ -14,7 +14,8 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   'https://social-f-three.vercel.app',
   'http://localhost:5174',
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://zippy-trifle-f2f094.netlify.app'
   //  // Add your second origin here
 ];
 

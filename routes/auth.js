@@ -62,9 +62,7 @@ router.post(
       console.log(errors);
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log('rr')
     const { username, password } = req.body;
-console.log(username)
     try {
       const user =await User.findOne({ username });
       if (!user) {
@@ -80,7 +78,7 @@ console.log(username)
           id: user._id,
         },
       };
-      const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "1H" });
+      const token =  jwt.sign(payload, SECRET_KEY, { expiresIn: "1H" });
       console.log(token);
       res.json({ token });
     } catch (err) {

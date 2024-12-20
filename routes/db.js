@@ -3,9 +3,8 @@ const router=express.Router();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_CREDENTIALS}@cluster0.lrcpv.mongodb.net/`, {
-    useNewUrlParser: true,
-  })
+mongoose.connect(`${process.env.MONGO_URL}`, {
+    })
     .then(() => {
       console.log("Connected to the database");
     })
