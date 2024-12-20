@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Define CORS options
 // Apply CORS middleware with options
 const corsOptions = {
-  origin: '* from this origin',
+  origin: 'https://social-f-three.vercel.app',
   credentials: true,               // Allow credentials (cookies)
 };
 
